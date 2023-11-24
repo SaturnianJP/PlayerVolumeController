@@ -1,0 +1,2 @@
+# PlayerVolumeController
+ UdonではPlayerVoiceGain等取得出来ないので、管理させるためのスクリプトです。
