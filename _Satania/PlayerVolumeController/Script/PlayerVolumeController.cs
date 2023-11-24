@@ -411,6 +411,51 @@ namespace satania.player.volume
         #endregion
 
         #region Reset Func
+        public void ResetVoiceGain(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceGain(playerid, VoiceGain);
+            }
+        }
+        public void ResetVoiceDistanceNear(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceDistanceNear(playerid, VoiceDistanceNear);
+            }
+        }
+        public void ResetVoiceDistanceFar(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceDistanceFar(playerid, VoiceDistanceFar);
+            }
+        }
+        public void ResetVoiceVolumetricRadius(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceVolumetricRadius(playerid, VoiceVolumetricRadius);
+            }
+        }
+        public void ResetVoiceLowpass(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceLowpass(playerid, VoiceLowPass);
+            }
+        }
         public void ResetPlayerVoice(int playerid)
         {
             VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
@@ -424,7 +469,60 @@ namespace satania.player.volume
                 SetVoiceLowpass(playerid, VoiceLowPass);
             }
         }
+        public void ResetAvatarAudioGain(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
 
+            if (player != null)
+            {
+                SetAvatarAudioGain(playerid, AvatarAudioGain);
+            }
+        }
+        public void ResetAvatarAudioFarRadius(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioFarRadius(playerid, AvatarAudioFarRadius);
+            }
+        }
+        public void ResetAvatarAudioNearRadius(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioNearRadius(playerid, AvatarAudioNearRadius);
+            }
+        }
+        public void ResetAvatarAudioVolumetricRadius(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioVolumetricRadius(playerid, AvatarAudioVolmetricRadius);
+            }
+        }
+        public void ResetAvatarAudioForceSpatial(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioForceSpatial(playerid, AvatarAudioForceSpatial);
+            }
+        }
+        public void ResetAvatarAudioCustomCurve(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioCustomCurve(playerid, AvatarAudioCustomCurve);
+            }
+        }
         public void ResetAvatarAudio(int playerid)
         {
             VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
