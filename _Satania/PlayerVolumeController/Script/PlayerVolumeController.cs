@@ -64,7 +64,7 @@ namespace satania.player.volume
         /// <summary>
         /// in Meters, Range is not limited This sets the maximum start of the range for hearing the avatar's audio. Default is 40 meters. You can lower this to make another player's avatar not travel as far, all the way to 0 to effectively 'mute' the player. Note that this is compared to the audio source's minDistance, and the smaller value is used.
         /// </summary>
-        [Header("アバターの音声が聞こえ始める距離 | 範囲[0 - 40] デフォルト[0]")]
+        [Header("アバターの音声が聞こえ始める距離 | 範囲[0 - 40] デフォルト[40]")]
         [SerializeField] float AvatarAudioNearRadius = 40.0f;
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace satania.player.volume
         /// <summary>
         /// On/Off This sets whether the audio source should use a pre-configured custom curve. Default is Off.
         /// </summary>
-        [Header("オーディオソースのカスタムカーブの有効化 | デフォルト[OFF]")]
-        [SerializeField] bool AvatarAudioCustomCurve = false;
+        [Header("オーディオソースのカスタムカーブの有効化 | デフォルト[ON]")]
+        [SerializeField] bool AvatarAudioCustomCurve = true;
         #endregion
 
         #region Player Voice Dictionaries
