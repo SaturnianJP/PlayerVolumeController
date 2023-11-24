@@ -11,6 +11,11 @@ namespace satania.player.volume
     /// </summary>
     public class PlayerVolumeController : SataniaNonSyncBehaviour
     {
+        private void DebugLog(string msg = "", string color = "yellow", string title = nameof(PlayerVolumeController))
+        {
+            Debug.Log($"[<color={color}>{title}</color>]{msg}");
+        }
+
         #region Serialize Variables
         /// <summary>
         /// in Decibels, Range 0-24 Add boost to the Player's voice in decibels. Default is 15.
@@ -128,10 +133,8 @@ namespace satania.player.volume
             if (index != -1)
                 dic.Remove(key);
         }
-        private void AddDictionaries(VRCPlayerApi player)
+        private void AddDictionaries(int _id)
         {
-            int _id = player.playerId;
-
             SetDictionary(_VoiceGains, _id, VoiceGain);
             SetDictionary(_VoiceDistanceNears, _id, VoiceDistanceNear);
             SetDictionary(_VoiceDistanceFars, _id, VoiceDistanceFar);
@@ -184,7 +187,7 @@ namespace satania.player.volume
                 if (!plr.IsValid())
                     continue;
 
-                AddDictionaries(plr);
+                AddDictionaries(plr.playerId);
             }
         }
         #endregion
@@ -291,20 +294,151 @@ namespace satania.player.volume
         #endregion
 
         #region Player Voice Func
-        public void SetVoiceGain(int playerid, float gain) { SetDictionary(_VoiceGains, playerid, gain); }
-        public void SetVoiceDistanceNear(int playerid, float near) { SetDictionary(_VoiceDistanceNears, playerid, near); }
-        public void SetVoiceDistanceFar(int playerid, float far) { SetDictionary(_VoiceDistanceFars, playerid, far); }
-        public void SetVoiceVolumetricRadius(int playerid, float radius) { SetDictionary(_VoiceVolumetricRadius, playerid, radius); }
-        public void SetVoiceLowpass(int playerid, bool lowpass) { SetDictionary(_VoiceLowpasses, playerid, lowpass); }
+        public void SetVoiceGain(int playerid, float gain) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_VoiceGains, playerid, gain);
+                player.SetVoiceGain(gain);
+            }
+        }
+        public void SetVoiceDistanceNear(int playerid, float near)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_VoiceDistanceNears, playerid, near);
+                player.SetVoiceDistanceNear(near);
+            }
+        }
+        public void SetVoiceDistanceFar(int playerid, float far) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_VoiceDistanceFars, playerid, far);
+                player.SetVoiceDistanceFar(far);
+            }
+        }
+        public void SetVoiceVolumetricRadius(int playerid, float radius) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_VoiceVolumetricRadius, playerid, radius);
+                player.SetVoiceVolumetricRadius(radius);
+            }
+        }
+        public void SetVoiceLowpass(int playerid, bool lowpass) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_VoiceLowpasses, playerid, lowpass);
+                player.SetVoiceLowpass(lowpass);
+            }
+        }
         #endregion
 
         #region Avatar Audio Func
-        public void SetAvatarAudioGain(int playerid, float gain) { SetDictionary(_AvatarAudioGain, playerid, gain); }
-        public void SetAvatarAudioFarRadius(int playerid, float radius) { SetDictionary(_AvatarAudioFarRadius, playerid, radius); }
-        public void SetAvatarAudioNearRadius(int playerid, float radius) { SetDictionary(_AvatarAudioNearRadius, playerid, radius); }
-        public void SetAvatarAudioVolumetricRadius(int playerid, float radius) { SetDictionary(_AvatarAudioVolumetricRadius, playerid, radius); }
-        public void SetAvatarAudioForceSpatial(int playerid, bool spatial) { SetDictionary(_AvatarAudioForceSpatial, playerid, spatial); }
-        public void SetAvatarAudioCustomCurve(int playerid, bool useCustomCurve) { SetDictionary(_AvatarAudioCustomCurve, playerid, useCustomCurve); }
+        public void SetAvatarAudioGain(int playerid, float gain)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioGain, playerid, gain);
+                player.SetAvatarAudioGain(gain);
+            }
+        }
+        public void SetAvatarAudioFarRadius(int playerid, float radius)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioFarRadius, playerid, radius);
+                player.SetAvatarAudioFarRadius(radius);
+            }
+
+        }
+        public void SetAvatarAudioNearRadius(int playerid, float radius)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioNearRadius, playerid, radius);
+                player.SetAvatarAudioNearRadius(radius);
+            }
+        }
+        public void SetAvatarAudioVolumetricRadius(int playerid, float radius) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioVolumetricRadius, playerid, radius);
+                player.SetAvatarAudioVolumetricRadius(radius);
+            }
+        }
+        public void SetAvatarAudioForceSpatial(int playerid, bool spatial) 
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioForceSpatial, playerid, spatial);
+                player.SetAvatarAudioForceSpatial(spatial);
+            }
+        }
+        public void SetAvatarAudioCustomCurve(int playerid, bool useCustomCurve)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetDictionary(_AvatarAudioCustomCurve, playerid, useCustomCurve);
+                player.SetAvatarAudioCustomCurve(useCustomCurve);
+            }
+        }
+        #endregion
+
+        #region Reset Func
+        public void ResetPlayerVoice(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetVoiceGain(playerid, VoiceGain);
+                SetVoiceDistanceNear(playerid, VoiceDistanceNear);
+                SetVoiceDistanceFar(playerid, VoiceDistanceFar);
+                SetVoiceVolumetricRadius(playerid, VoiceVolumetricRadius);
+                SetVoiceLowpass(playerid, VoiceLowPass);
+            }
+        }
+
+        public void ResetAvatarAudio(int playerid)
+        {
+            VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerid);
+
+            if (player != null)
+            {
+                SetAvatarAudioGain(playerid, AvatarAudioGain);
+                SetAvatarAudioFarRadius(playerid, AvatarAudioFarRadius);
+                SetAvatarAudioNearRadius(playerid, AvatarAudioNearRadius);
+                SetAvatarAudioVolumetricRadius(playerid, AvatarAudioVolmetricRadius);
+                SetAvatarAudioForceSpatial(playerid, AvatarAudioForceSpatial);
+                SetAvatarAudioCustomCurve(playerid, AvatarAudioCustomCurve);
+            }
+        }
         #endregion
 
         #region VRChat Func
@@ -313,7 +447,7 @@ namespace satania.player.volume
             if (player.isLocal)
                 InitializeDictionary(player);
             else
-                AddDictionaries(player);
+                AddDictionaries(player.playerId);
         }
 
         public override void OnPlayerLeft(VRCPlayerApi player)
